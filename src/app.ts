@@ -1,4 +1,4 @@
-import TodoList from './components/TodoList'
+import TodoList from './components/TodoList/TodoList'
 import { ITodoData } from './Typings/index'
 
 
@@ -35,5 +35,5 @@ import { ITodoData } from './Typings/index'
 	}
 
 	init()
-	
+
 })(document)

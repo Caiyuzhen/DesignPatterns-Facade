@@ -1,0 +1,8 @@
+input[type="checkbox"]:checked + span { //【 + span 】表示后继选择器, 意味着选择其直接后续的 span 元素
+	text-decoration: line-through;
+	color: #999;
+}
+
+/* .toto-item {
+	background-color: #3370FF;
+} */

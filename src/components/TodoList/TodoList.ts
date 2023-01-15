@@ -2,7 +2,7 @@ import { ITodoData } from "../../Typings";
 import Input, { InputOptions } from "./Subs/Input"
 import List, { IListOptions } from "./Subs/List"
 
-// Todolist 外观容器的类
+// Todolist 【外观容器】的类
 class TodoList {
 
 	private ele: HTMLElement
@@ -39,7 +39,7 @@ class TodoList {
 		}) 
 		this.list = new List(<IListOptions>{ //实例化子组件(然后把父组件中定义的这个容器传给子组件, 让子组件把自己放进去)
 			containerEle: this.todoContainer,
-			textData: this.todoData //传给列表，让列表渲染数据
+			todoData: this.todoData //传给列表，让列表渲染数据
 		})
 		// console.log('创建子组件')
 	}
@@ -56,6 +56,8 @@ class TodoList {
 
 	// 点击 checkbox 开关的事件绑定
 	private bindEvent() {
+		this.input.bindEvent()// 🔥🔥执行 input 子组卷内的 bindEvent 方法！！
+		this.list.bindEvent()//	🔥🔥执行 list 子组卷内的 bindEvent 方法！！
 		// console.log('绑定事件函数')
 	}
 }
