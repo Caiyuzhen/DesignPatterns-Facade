@@ -21,7 +21,7 @@ class TodoList {
 	}
 
 
-	// 总开关, 初始化执行的函数
+	// 🎱【总开关】 初始化执行的函数, 暴露出来的接口, 只要一执行就会渲染整个 TodoList, 比如给搭配 app.ts 进行调用
 	public init() {
 		this.createConponents() //先执行实例化子组件
 		this.render()

@@ -1,5 +1,6 @@
 import AbstractComponent from "./AbstractComponent"
 import List from "./List"
+import './main.css'
 
 export interface InputOptions {
 	containerEle: HTMLElement //🔥🔥父组件 create 出来的 div 容器, 用来给子组件让子组件把自己渲染进这个容器内

@@ -8,7 +8,7 @@ abstract class AbstractComponent {
 	// 🔥渲染 Input 视图的方法, protected 表示【当前类】跟【子类】可以去访问这个方法, 其他【外部】则不能访问
 	protected static inputView(placeholderText: string, buttonText: string): string {
 		return `
-			<div>
+			<div class='todo-bar'>
 				<input type="text" class="todo-input" placeholder=${placeholderText}>
 				<button class="add-button">${buttonText}</button>
 			</div>
@@ -48,17 +48,19 @@ abstract class AbstractComponent {
 		//line-through; 为文本装饰线
 		return `
 			<div class="todo-items">	
-				<input 
-					type="checkbox" 
-					data-id="${id}"
-					${completed ? 'checked' : ''} 
+				<div class="pre-content">
+					<input 
+						type="checkbox" 
+						data-id="${id}"
+						${completed ? 'checked' : ''} 
+						>
+					<span 
+						style="text-decoration: ${completed ? 'line-through;' : '' }"
 					>
-				<span 
-					style="text-decoration: ${completed ? 'line-through;' : '' }"
-				>
-					${content}
-				</span>
-				<button data-id="${id}">删除</button>
+						${content}
+					</span>
+				</div>
+				<button data-id="${id}" class="del-button">删除</button>
 			</div>
 		`
 	}

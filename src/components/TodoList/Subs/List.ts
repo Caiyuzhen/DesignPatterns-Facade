@@ -1,6 +1,6 @@
 import { ITodoData } from "../../../Typings"
 import AbstractComponent  from "./AbstractComponent"
-import './List.css'
+import './main.css'
 
 export interface IListOptions {
 	containerEle: HTMLElement //🔥🔥父组件 create 出来的 div 容器, 用来给子组件让子组件把自己渲染进这个容器内
@@ -34,6 +34,8 @@ class List extends AbstractComponent{
 
 	// 🔥🔥添加 list 数据的方法, 【由 Input 组件调用】, 传入 Input 组件内获得的 【输入框数据】！！
 	public static addItem(textValue: string) {
+		const todoItem: HTMLElement = document.querySelector('.todo-list') as HTMLElement// 先去保存数据, 避免空状态的问题(会直接显示 '暂无数据')
+		
 		// 新增一条 todo
 		const _item: ITodoData = {
 			id: new Date().getTime(),
@@ -42,8 +44,12 @@ class List extends AbstractComponent{
 		}
 		
 		List.todoData.push(_item) //🚀🚀🚀【静态属性 - 第四步】把新增的数据 push 进 todoData 数组中, 然后再由 AbstractComponent 抽象类进行渲染
-		const todoList: HTMLElement =  document.querySelector('.todo-list') as HTMLElement
-		todoList.innerHTML += AbstractComponent.todoView(_item)
+
+		if(List.todoData.length === 1){
+			todoItem.innerHTML = ''//如果开始新增数据, 则 =1 , 则清空 '暂无数据’ 的占位符
+		}
+
+		todoItem.innerHTML += AbstractComponent.todoView(_item)
 	}
 
 
@@ -55,6 +61,7 @@ class List extends AbstractComponent{
 	}
 
 
+	//点击 list
 	private handleItemClick(e: MouseEvent) {
 		// 👇整个 list 的点击事件, 💡💡【需要判断点击的元素是什么类型】（是 checkbox 还是 delete 按钮!!）
 		const tar = e.target as HTMLElement
@@ -80,6 +87,7 @@ class List extends AbstractComponent{
 	}
 
 
+	//点击 checkbox
 	private _handleClickCheckbox(selectedId:number, allTodoItems:HTMLCollection) {
 		// const selectedId: number = parseInt(target.dataset.id as string) //获取到 checkbox 的 data-id 属性
 		List.todoData = List.todoData.map((todo:ITodoData, index:number) => {
@@ -95,6 +103,7 @@ class List extends AbstractComponent{
 	}
 
 
+	//点击删除按钮
 	private _handleClickButton(selectedId:number, allTodoItems: HTMLCollection) {
 		// const selectedId: number = parseInt(target.dataset.id as string) //获取到 button 的 data-id 属性
 		List.todoData = List.todoData.filter((todo:ITodoData, index:number) => {
@@ -104,6 +113,12 @@ class List extends AbstractComponent{
 				allTodoItems[index].remove()
 			}
 		})
+
+		if(List.todoData.length === 0) {// 如果全空了则显示回 '暂无数据' 的占位符
+			const allTodoItems: HTMLCollection = document.getElementsByClassName('todo-items') 
+			const todoItem: HTMLElement = document.querySelector('.todo-list') as HTMLElement
+			todoItem.innerHTML = '暂无数据'
+		}
 	}
 }
 

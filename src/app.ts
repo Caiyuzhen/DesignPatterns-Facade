@@ -28,8 +28,8 @@ import { ITodoData } from './Typings/index'
 	]
 
 
+	// ⚡️把数据传入 todoList 容器, 调用 TodoList 内的 init() 接口来渲染 TodoList
 	const init = (): void => {
-		// ⚡️传入 todoList 容器 、初始化的数据
 		const todoList: TodoList = new TodoList(oAPP, todoData)
 		todoList.init() //执行类里边的方法
 	}

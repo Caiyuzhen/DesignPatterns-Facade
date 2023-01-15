@@ -1,0 +1,71 @@
+.todo-bar {
+	margin: 0;
+	padding: 0;
+	/* 水平垂直居中 */
+	position: absolute;
+	top: 400px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:checked + span { //【 + span 】表示后继选择器, 意味着选择其直接后续的 span 元素
+	text-decoration: line-through;
+	color: #999;
+}
+
+/* .toto-item {
+	background-color: #3370FF;
+} */
+
+.todo-input{
+	width: 300px;
+	height: 32px;
+	border-radius: 88px;
+	border: 1px solid #999;
+	padding: 0 12px;
+}
+
+.add-button{
+	width: 80px;
+	height: 32px;
+	border-radius: 88px;
+	border: none;
+	background-color: black;
+	color: yellow;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.todo-list {
+	/* 水平垂直居中 */
+	position: absolute;
+	top: 500px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.todo-items{
+	width: 410px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.pre-content {
+	width:80%
+}
+
+.del-button {
+	width: 80px;
+	height: 32px;
+	border-radius: 88px;
+	border: none;
+	background-color: #820000;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
