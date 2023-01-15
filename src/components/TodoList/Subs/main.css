@@ -34,6 +34,32 @@ input[type="checkbox"]:checked + span { //【 + span 】表示后继选择器, �
 	color: yellow;
 	font-weight: 500;
 	cursor: pointer;
+	position: relative;
+	/* overflow: hidden; */
+}
+
+/* 鼠标移到 add 按钮上时变高亮 */
+.add-button::before{
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	/* left: 50%;
+	top: 50%; */
+	left: (--x); //用 js 计算
+	top: (--y); //用 js 计算
+	transform: translate(-50%, -50%);
+	/* background: radial-gradient(circle closest-side, #FFF8EA, transparent); */
+	background: radial-gradient(circle closest-side, black, transparent);
+	opacity: 0.6;
+	transition: width 0.2s ease, height 0.2s ease;
+	/* background: radial-gradient(#e66465, #9198e5); */
+}
+
+.add-button:hover::before{
+	width: 200px;
+	height: 200px;
+	opacity: 0.6;
 }
 
 .todo-list {

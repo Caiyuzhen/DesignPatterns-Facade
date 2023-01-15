@@ -35,6 +35,8 @@ class Input extends AbstractComponent{//继承抽象类
 		const inputEle: HTMLInputElement = document.querySelector('.todo-input') as HTMLInputElement //获取输入框
 		// 点击添加按钮, 传入【inputEle 这个参数】拿到输入框的值, 并且把值传给【List 组件】, 让 List 组件去新增一组数据】
 		addBtn.addEventListener('click', this.handleBtnClick.bind(this, inputEle), false) //👈👈👈👈👈记得要绑定 this, 不然 this 指向的是 addBtn!! 🔥🔥🔥🔥🔥 用 bind(this)) 让 this 指向 Input 本身!! 其次因为要传给 List 组件, 需要要传入 inputEle 参数！
+
+		this.handleMouseEnter() 
 	}
 
 
@@ -48,6 +50,20 @@ class Input extends AbstractComponent{//继承抽象类
 			List.addItem(textValue) //🔥🔥🔥🔥需要在 List 内定义为静态方法, 【不用实例化就能调用】！！
 			inputDom.value = '' //清空输入框
 		}
+	}
+
+
+	// 👋鼠标光圈移动事件
+	private handleMouseEnter() {
+		const addBtn: HTMLElement = document.querySelector('.add-button') as HTMLElement//获取按钮
+		addBtn.addEventListener('mousemove', (e) => {
+			let rect = (e.target as HTMLElement).getBoundingClientRect()
+			let x = e.clientX - rect.left
+			let y = e.clientY - rect.top
+			addBtn.style.setProperty('--x', x + 'px')
+			addBtn.style.setProperty('--y', y + 'px')
+			console.log(x, y);
+		})
 	}
 }
 

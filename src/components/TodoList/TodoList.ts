@@ -35,7 +35,7 @@ class TodoList {
 		this.input = new Input(<InputOptions>{
 			containerEle: this.todoContainer,
 			placeholderText: '请输入内容',
-			buttonText: '增加'
+			buttonText: '添加'
 		}) 
 		this.list = new List(<IListOptions>{ //实例化子组件(然后把父组件中定义的这个容器传给子组件, 让子组件把自己放进去)
 			containerEle: this.todoContainer,
